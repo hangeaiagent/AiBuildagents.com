@@ -21,8 +21,14 @@ export default [
       semi: ['error', 'always'],
       curly: ['error'],
       'no-eval': ['error'],
-      'linebreak-style': ['error', 'unix'],
+      'linebreak-style': [0, 'error', 'windows'],
       'arrow-spacing': ['error', { before: true, after: true }],
+      'prettier/prettier': [
+        'error',
+        {
+          endOfLine: 'auto', // 允许自动处理行尾符
+        },
+      ],
     },
   },
   {
