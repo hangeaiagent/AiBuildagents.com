@@ -43,7 +43,7 @@ import { ExpoQrModal } from '~/components/workbench/ExpoQrModal';
 import { expoUrlAtom } from '~/lib/stores/qrCodeStore';
 import { useStore } from '@nanostores/react';
 import { StickToBottom, useStickToBottomContext } from '~/lib/hooks';
-
+import { authStore } from '~/lib/stores/auth';
 const TEXTAREA_MIN_HEIGHT = 76;
 
 interface BaseChatProps {
@@ -217,6 +217,22 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
       }
     }, [providerList, provider]);
 
+    // 启动时默认调起登录
+    useEffect(() => {
+      console.log('启动');
+      // login('402493977@qq.com', 'hw123456');
+    });
+
+    // 登录demo
+    const login = async (email: string, password: string) => {
+      const { error } = await authStore.login(email, password);
+      if (!error) {
+        console.log('登录成功');
+        // 可以在这里执行其他操作，比如跳转页面
+      } else {
+        console.error('登录失败:', error.message);
+      }
+    };
     const onApiKeysChange = async (providerName: string, apiKey: string) => {
       const newApiKeys = { ...apiKeys, [providerName]: apiKey };
       setApiKeys(newApiKeys);
