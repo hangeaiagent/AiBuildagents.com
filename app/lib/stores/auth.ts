@@ -57,15 +57,15 @@ class AuthStore {
     return this.state;
   }
 
-  get user() {
+  getUser() {
     return this.state.value?.user;
   }
 
-  get isLoading() {
+  getIsLoading() {
     return this.state.value?.isLoading;
   }
 
-  get isAuthenticated() {
+  getIsAuthenticated() {
     return this.state.value?.isAuthenticated;
   }
 

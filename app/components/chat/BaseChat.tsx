@@ -21,7 +21,6 @@ import { ExportChatButton } from '~/components/chat/chatExportAndImport/ExportCh
 import { ImportButtons } from '~/components/chat/chatExportAndImport/ImportButtons';
 import { ExamplePrompts } from '~/components/chat/ExamplePrompts';
 import GitCloneButton from './GitCloneButton';
-
 import FilePreview from './FilePreview';
 import { ModelSelector } from '~/components/chat/ModelSelector';
 import { SpeechRecognitionButton } from '~/components/chat/SpeechRecognition';
@@ -219,20 +218,19 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
 
     // 启动时默认调起登录
     useEffect(() => {
-      console.log('启动');
-      // login('402493977@qq.com', 'hw123456');
+      // console.log(authStore.getIsAuthenticated());
     });
 
     // 登录demo
-    const login = async (email: string, password: string) => {
-      const { error } = await authStore.login(email, password);
-      if (!error) {
-        console.log('登录成功');
-        // 可以在这里执行其他操作，比如跳转页面
-      } else {
-        console.error('登录失败:', error.message);
-      }
-    };
+    // const login = async (email: string, password: string) => {
+    //   const { error } = await authStore.login(email, password);
+    //   if (!error) {
+    //     console.log('登录成功');
+    //     // 可以在这里执行其他操作，比如跳转页面
+    //   } else {
+    //     console.error('登录失败:', error.message);
+    //   }
+    // };
     const onApiKeysChange = async (providerName: string, apiKey: string) => {
       const newApiKeys = { ...apiKeys, [providerName]: apiKey };
       setApiKeys(newApiKeys);
